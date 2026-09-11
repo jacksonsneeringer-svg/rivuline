@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RIVULINE Media</title>
+<meta name="description" content="RIVULINE Media">
+<meta name="theme-color" content="#04121f">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="RIVULINE Media">
+<meta property="og:url" content="https://rivuline.com/">
+<meta property="og:site_name" content="RIVULINE Media">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://rivuline.com/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2304121f'/%3E%3Cpath d='M4 19c3.5-6 7 3 10.5-1.5S21 21 28 13' fill='none' stroke='%236fd8d2' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --deep:#04121f;
+  --text:#eef6f8;
+  --accent:#7fe0d8;
+}
+*,*::before,*::after{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  background:var(--deep);
+  color:var(--text);
+  font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;
+  overflow:hidden;
+}
+
+.stage{
+  position:fixed;
+  inset:0;
+  display:grid;
+  place-items:center;
+  isolation:isolate;
+}
+
+/* ---- depth gradient ---- */
+.stage::before{
+  content:"";
+  position:absolute;inset:0;z-index:0;
+  background:
+    radial-gradient(120% 78% at 50% -12%, #10425a 0%, #0a2a40 34%, #061a2b 62%, #04121f 100%),
+    linear-gradient(180deg,#062033 0%,#04121f 70%,#020b14 100%);
+}
+
+/* ---- drifting light shafts (surface caustics) ---- */
+.caustics{
+  position:absolute;inset:-15%;z-index:1;
+  pointer-events:none;
+  filter:blur(46px);
+  opacity:.5;
+}
+.caustics i{
+  position:absolute;
+  display:block;
+  border-radius:50%;
+  mix-blend-mode:screen;
+}
+.c1{
+  width:62vw;height:52vw;left:2%;top:-14%;
+  background:radial-gradient(circle at 50% 50%, rgba(74,196,196,.42), rgba(74,196,196,0) 68%);
+  animation:drift1 26s ease-in-out infinite alternate;
+}
+.c2{
+  width:54vw;height:46vw;right:-6%;top:6%;
+  background:radial-gradient(circle at 50% 50%, rgba(56,128,214,.38), rgba(56,128,214,0) 68%);
+  animation:drift2 32s ease-in-out infinite alternate;
+}
+.c3{
+  width:70vw;height:40vw;left:14%;bottom:-18%;
+  background:radial-gradient(circle at 50% 50%, rgba(30,150,160,.3), rgba(30,150,160,0) 70%);
+  animation:drift3 38s ease-in-out infinite alternate;
+}
+@keyframes drift1{
+  from{transform:translate3d(0,0,0) scale(1)}
+  to{transform:translate3d(7vw,5vh,0) scale(1.14)}
+}
+@keyframes drift2{
+  from{transform:translate3d(0,0,0) scale(1.08)}
+  to{transform:translate3d(-8vw,7vh,0) scale(.94)}
+}
+@keyframes drift3{
+  from{transform:translate3d(0,0,0) scale(1)}
+  to{transform:translate3d(-6vw,-5vh,0) scale(1.12)}
+}
+
+/* ---- flowing current lines ---- */
+#waves{
+  position:absolute;inset:0;z-index:2;
+  width:100%;height:100%;
+  pointer-events:none;
+}
+
+/* ---- vignette + fine grain ---- */
+.stage::after{
+  content:"";
+  position:absolute;inset:0;z-index:3;
+  pointer-events:none;
+  background:
+    radial-gradient(78% 62% at 50% 46%, rgba(0,0,0,0) 42%, rgba(2,9,16,.55) 100%);
+}
+
+/* ---- wordmark ---- */
+.mark{
+  position:relative;z-index:4;
+  margin:0;
+  padding:0 24px;
+  text-align:center;
+  font-size:clamp(22px,7vw,82px);
+  font-weight:600;
+  letter-spacing:.2em;
+  text-indent:.2em;            /* balance the trailing letter-space */
+  line-height:1.25;
+  white-space:nowrap;
+  color:var(--text);
+  text-shadow:0 2px 40px rgba(4,18,31,.7);
+  opacity:0;
+  transform:translateY(14px);
+  animation:rise 1.8s cubic-bezier(.2,.7,.25,1) .25s forwards;
+}
+.mark .m{
+  font-weight:300;
+  color:rgba(238,246,248,.72);
+}
+@keyframes rise{to{opacity:1;transform:none}}
+
+@media (prefers-reduced-motion:reduce){
+  .caustics i{animation:none}
+  .mark{animation:none;opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<div class="stage">
+  <div class="caustics" aria-hidden="true">
+    <i class="c1"></i><i class="c2"></i><i class="c3"></i>
+  </div>
+
+  <canvas id="waves" aria-hidden="true"></canvas>
+
+  <h1 class="mark">RIVULINE <span class="m">Media</span></h1>
+</div>
+
+<script>
+(function () {
+  var canvas = document.getElementById('waves');
+  var ctx = canvas.getContext('2d');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  var W = 0, H = 0, dpr = 1;
+  var LINES = 16;
+
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = canvas.clientWidth;
+    H = canvas.clientHeight;
+    canvas.width = Math.round(W * dpr);
+    canvas.height = Math.round(H * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+
+  // Layered sines -> smooth, non-repeating-looking current
+  function offset(x, t, i) {
+    var k = 1 + i * 0.06;
+    return (
+      Math.sin(x * 0.0042 * k + t * 0.22 + i * 0.55) * 26 +
+      Math.sin(x * 0.0091 * k - t * 0.31 + i * 1.3) * 13 +
+      Math.sin(x * 0.0019 - t * 0.14 + i * 0.27) * 38
+    );
+  }
+
+  function draw(t) {
+    ctx.clearRect(0, 0, W, H);
+
+    for (var i = 0; i < LINES; i++) {
+      var p = i / (LINES - 1);            // 0 (top) -> 1 (bottom)
+      var baseY = H * (0.12 + p * 0.82);
+      var depth = Math.sin(p * Math.PI);  // strongest mid-frame
+
+      ctx.beginPath();
+      var step = 14;
+      for (var x = -40; x <= W + 40; x += step) {
+        var y = baseY + offset(x, t, i) * (0.45 + depth * 0.85);
+        if (x === -40) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+      }
+
+      var g = ctx.createLinearGradient(0, 0, W, 0);
+      var a = (0.05 + depth * 0.13) * (1 - p * 0.35);
+      g.addColorStop(0,    'rgba(127,224,216,0)');
+      g.addColorStop(0.2,  'rgba(127,224,216,' + a.toFixed(3) + ')');
+      g.addColorStop(0.5,  'rgba(168,238,235,' + (a * 1.35).toFixed(3) + ')');
+      g.addColorStop(0.8,  'rgba(108,168,230,' + a.toFixed(3) + ')');
+      g.addColorStop(1,    'rgba(108,168,230,0)');
+
+      ctx.strokeStyle = g;
+      ctx.lineWidth = 0.9 + depth * 0.9;
+      ctx.stroke();
+    }
+  }
+
+  var start = null, raf = null;
+  function frame(now) {
+    if (start === null) start = now;
+    draw((now - start) / 1000);
+    raf = requestAnimationFrame(frame);
+  }
+  function play() {
+    if (raf === null && !reduce.matches) raf = requestAnimationFrame(frame);
+  }
+  function pause() {
+    if (raf !== null) { cancelAnimationFrame(raf); raf = null; }
+  }
+
+  resize();
+  draw(0);
+  if (!reduce.matches) play();
+
+  var rt;
+  window.addEventListener('resize', function () {
+    clearTimeout(rt);
+    rt = setTimeout(function () { resize(); draw(raf === null ? 0 : performance.now() / 1000); }, 120);
+  });
+
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden) pause();
+    else { start = null; play(); }
+  });
+
+  if (reduce.addEventListener) {
+    reduce.addEventListener('change', function () {
+      if (reduce.matches) { pause(); draw(0); } else { start = null; play(); }
+    });
+  }
+})();
+</script>
+
+</body>
+</html>
