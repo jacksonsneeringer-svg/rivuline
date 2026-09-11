@@ -3,592 +3,247 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>RIVULINE Media — Stories with momentum</title>
-<meta name="description" content="RIVULINE Media is a creative studio producing brand films, social content, photography and post-production for brands that want to be felt, not just seen.">
-<meta name="theme-color" content="#070d16">
+<title>RIVULINE Media</title>
+<meta name="description" content="RIVULINE Media">
+<meta name="theme-color" content="#04121f">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="RIVULINE Media — Stories with momentum">
-<meta property="og:description" content="A creative studio producing brand films, social content, photography and post-production.">
+<meta property="og:title" content="RIVULINE Media">
 <meta property="og:url" content="https://rivuline.com/">
 <meta property="og:site_name" content="RIVULINE Media">
-<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://rivuline.com/">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23070d16'/%3E%3Cpath d='M5 20c4-8 8 4 11-2s5 6 11-4' fill='none' stroke='%2338d6c4' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2304121f'/%3E%3Cpath d='M4 19c3.5-6 7 3 10.5-1.5S21 21 28 13' fill='none' stroke='%236fd8d2' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
 :root{
-  --ink:#070d16;
-  --ink-2:#0d1524;
-  --line:rgba(255,255,255,.10);
-  --text:#e9eef6;
-  --muted:#93a1b5;
-  --accent:#38d6c4;
-  --accent-2:#5b8cff;
-  --max:1160px;
-  --r:16px;
-  --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-  --serif:"Instrument Serif",Georgia,"Times New Roman",serif;
+  --deep:#04121f;
+  --text:#eef6f8;
+  --accent:#7fe0d8;
 }
-
 *,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+html,body{height:100%}
 body{
   margin:0;
-  background:var(--ink);
+  background:var(--deep);
   color:var(--text);
-  font-family:var(--sans);
-  font-size:17px;
-  line-height:1.65;
+  font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   -webkit-font-smoothing:antialiased;
-  overflow-x:hidden;
-}
-img{max-width:100%;display:block}
-a{color:inherit}
-::selection{background:var(--accent);color:var(--ink)}
-:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
-
-.wrap{width:100%;max-width:var(--max);margin-inline:auto;padding-inline:24px}
-section{position:relative}
-.eyebrow{
-  font-size:12px;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--accent);font-weight:600;margin:0 0 18px;
-  display:flex;align-items:center;gap:10px;
-}
-.eyebrow::before{content:"";width:26px;height:1px;background:var(--accent);opacity:.6}
-h1,h2,h3{line-height:1.1;margin:0;font-weight:600;letter-spacing:-.02em}
-h2{font-size:clamp(30px,4.6vw,46px)}
-.lede{color:var(--muted);font-size:clamp(16px,1.6vw,19px);max-width:56ch}
-em.s{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-.01em}
-
-/* ---------- nav ---------- */
-.nav{
-  position:fixed;inset:0 0 auto 0;z-index:50;
-  transition:background .3s ease,border-color .3s ease,backdrop-filter .3s ease;
-  border-bottom:1px solid transparent;
-}
-.nav.scrolled{
-  background:rgba(7,13,22,.78);
-  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-  border-bottom-color:var(--line);
-}
-.nav-in{display:flex;align-items:center;justify-content:space-between;height:72px;gap:16px}
-.brand{
-  display:flex;align-items:center;gap:11px;
-  font-weight:600;letter-spacing:.16em;font-size:14px;text-decoration:none;
-}
-.brand svg{width:26px;height:26px;flex:none}
-.brand span.sub{color:var(--muted);letter-spacing:.16em;font-weight:400}
-.nav-links{display:flex;align-items:center;gap:30px}
-.nav-links a{
-  text-decoration:none;font-size:14.5px;color:var(--muted);
-  transition:color .2s ease;
-}
-.nav-links a:hover{color:var(--text)}
-.nav-links a.btn-primary,.nav-links a.btn-primary:hover{color:#04211e}
-.nav-links a.btn-ghost,.nav-links a.btn-ghost:hover{color:var(--text)}
-.btn{
-  display:inline-flex;align-items:center;justify-content:center;gap:9px;
-  padding:12px 22px;border-radius:999px;font-size:14.5px;font-weight:500;
-  text-decoration:none;border:1px solid var(--line);
-  transition:transform .2s ease,background .2s ease,border-color .2s ease,color .2s ease;
-  white-space:nowrap;
-}
-.btn:hover{transform:translateY(-2px)}
-.btn-primary{background:var(--accent);color:#04211e;border-color:transparent;font-weight:600}
-.btn-primary:hover{background:#4ee7d4}
-.btn-ghost:hover{border-color:rgba(255,255,255,.3);background:rgba(255,255,255,.04)}
-.menu-btn{
-  display:none;background:none;border:1px solid var(--line);color:var(--text);
-  border-radius:10px;width:42px;height:42px;cursor:pointer;padding:0;
-}
-.menu-btn svg{width:20px;height:20px;margin:auto}
-
-/* ---------- hero ---------- */
-.hero{padding:150px 0 96px;overflow:hidden}
-.hero-bg{position:absolute;inset:0;z-index:-1;pointer-events:none}
-.hero-bg .glow{
-  position:absolute;border-radius:50%;filter:blur(90px);opacity:.4;
-}
-.glow-a{width:520px;height:520px;background:#0f5f6b;top:-160px;right:-120px}
-.glow-b{width:460px;height:460px;background:#22305e;top:180px;left:-180px;opacity:.5}
-.streams{position:absolute;inset:0;width:100%;height:100%}
-.streams path{
-  fill:none;stroke-linecap:round;
-  stroke-dasharray:1400;stroke-dashoffset:1400;
-  animation:draw 3s cubic-bezier(.22,.8,.3,1) forwards;
-}
-@keyframes draw{to{stroke-dashoffset:0}}
-.hero h1{font-size:clamp(42px,7.4vw,86px);max-width:16ch;margin-bottom:26px}
-.hero .lede{font-size:clamp(17px,1.8vw,20px)}
-.hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:38px}
-.hero-meta{
-  display:flex;flex-wrap:wrap;gap:14px 34px;margin-top:64px;
-  padding-top:26px;border-top:1px solid var(--line);
-  color:var(--muted);font-size:13.5px;letter-spacing:.04em;
-}
-.hero-meta span{display:flex;align-items:center;gap:9px}
-.dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex:none}
-
-/* ---------- marquee ---------- */
-.strip{border-block:1px solid var(--line);background:var(--ink-2);overflow:hidden;padding:18px 0}
-.track{display:flex;gap:56px;width:max-content;animation:slide 34s linear infinite}
-.strip:hover .track{animation-play-state:paused}
-@keyframes slide{to{transform:translateX(-50%)}}
-.track span{
-  color:var(--muted);font-size:13px;letter-spacing:.22em;text-transform:uppercase;
-  white-space:nowrap;
+  overflow:hidden;
 }
 
-/* ---------- generic section ---------- */
-.sec{padding:104px 0}
-.sec-head{max-width:62ch;margin-bottom:52px}
+.stage{
+  position:fixed;
+  inset:0;
+  display:grid;
+  place-items:center;
+  isolation:isolate;
+}
 
-/* ---------- services ---------- */
-.grid{display:grid;gap:20px}
-.services{grid-template-columns:repeat(auto-fit,minmax(258px,1fr))}
-.card{
-  background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.015));
-  border:1px solid var(--line);border-radius:var(--r);
-  padding:30px 28px 32px;
-  transition:transform .25s ease,border-color .25s ease,background .25s ease;
-}
-.card:hover{transform:translateY(-5px);border-color:rgba(56,214,196,.45)}
-.card .ic{
-  width:42px;height:42px;border-radius:11px;display:grid;place-items:center;
-  background:rgba(56,214,196,.12);color:var(--accent);margin-bottom:20px;
-}
-.card .ic svg{width:21px;height:21px}
-.card h3{font-size:19px;margin-bottom:10px}
-.card p{margin:0;color:var(--muted);font-size:15.5px;line-height:1.6}
-
-/* ---------- work ---------- */
-.work{grid-template-columns:repeat(2,1fr)}
-.tile{
-  position:relative;border:1px solid var(--line);border-radius:var(--r);
-  overflow:hidden;min-height:284px;display:flex;flex-direction:column;
-  justify-content:flex-end;padding:26px;text-decoration:none;isolation:isolate;
-  transition:transform .3s ease,border-color .3s ease;
-}
-.tile:hover{transform:translateY(-5px);border-color:rgba(255,255,255,.26)}
-.tile::before{
-  content:"";position:absolute;inset:0;z-index:-2;
-  transition:transform .5s ease;
-}
-.tile:hover::before{transform:scale(1.06)}
-.tile::after{
-  content:"";position:absolute;inset:0;z-index:-1;
-  background:linear-gradient(180deg,rgba(7,13,22,0) 28%,rgba(7,13,22,.86) 100%);
-}
-.t1::before{background:linear-gradient(140deg,#14494f,#0b2338 65%,#0a1a2c)}
-.t2::before{background:linear-gradient(140deg,#243a6e,#131d38 70%,#0a1120)}
-.t3::before{background:linear-gradient(140deg,#4a3a63,#1d1b38 70%,#0d1020)}
-.t4::before{background:linear-gradient(140deg,#5a4530,#241a1e 70%,#0f1018)}
-.tile .tag{
-  font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--accent);margin-bottom:10px;font-weight:600;
-}
-.tile h3{font-size:21px;margin-bottom:6px}
-.tile p{margin:0;color:var(--muted);font-size:14.5px}
-
-/* ---------- about / stats ---------- */
-.split{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center}
-.stats{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.stat{
-  border:1px solid var(--line);border-radius:14px;padding:24px 22px;
-  background:rgba(255,255,255,.025);
-}
-.stat b{display:block;font-size:34px;font-weight:600;letter-spacing:-.03em;line-height:1.1}
-.stat b .u{color:var(--accent)}
-.stat small{color:var(--muted);font-size:13.5px;letter-spacing:.03em}
-.about p{color:var(--muted);margin:0 0 18px}
-.about p:last-of-type{margin-bottom:0}
-
-/* ---------- process ---------- */
-.steps{counter-reset:s;display:grid;gap:2px;border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
-.step{
-  display:grid;grid-template-columns:76px 1fr;gap:22px;align-items:start;
-  padding:28px;background:rgba(255,255,255,.022);
-  transition:background .25s ease;
-}
-.step:hover{background:rgba(255,255,255,.05)}
-.step .n{
-  font-family:var(--serif);font-size:34px;line-height:1;color:var(--accent);opacity:.85;
-}
-.step h3{font-size:18px;margin-bottom:7px}
-.step p{margin:0;color:var(--muted);font-size:15.5px}
-
-/* ---------- contact ---------- */
-.cta{
-  border:1px solid var(--line);border-radius:26px;padding:clamp(36px,6vw,72px);
+/* ---- depth gradient ---- */
+.stage::before{
+  content:"";
+  position:absolute;inset:0;z-index:0;
   background:
-    radial-gradient(120% 140% at 12% 0%,rgba(56,214,196,.15),transparent 55%),
-    radial-gradient(120% 140% at 88% 100%,rgba(91,140,255,.16),transparent 55%),
-    var(--ink-2);
+    radial-gradient(120% 78% at 50% -12%, #10425a 0%, #0a2a40 34%, #061a2b 62%, #04121f 100%),
+    linear-gradient(180deg,#062033 0%,#04121f 70%,#020b14 100%);
+}
+
+/* ---- drifting light shafts (surface caustics) ---- */
+.caustics{
+  position:absolute;inset:-15%;z-index:1;
+  pointer-events:none;
+  filter:blur(46px);
+  opacity:.5;
+}
+.caustics i{
+  position:absolute;
+  display:block;
+  border-radius:50%;
+  mix-blend-mode:screen;
+}
+.c1{
+  width:62vw;height:52vw;left:2%;top:-14%;
+  background:radial-gradient(circle at 50% 50%, rgba(74,196,196,.42), rgba(74,196,196,0) 68%);
+  animation:drift1 26s ease-in-out infinite alternate;
+}
+.c2{
+  width:54vw;height:46vw;right:-6%;top:6%;
+  background:radial-gradient(circle at 50% 50%, rgba(56,128,214,.38), rgba(56,128,214,0) 68%);
+  animation:drift2 32s ease-in-out infinite alternate;
+}
+.c3{
+  width:70vw;height:40vw;left:14%;bottom:-18%;
+  background:radial-gradient(circle at 50% 50%, rgba(30,150,160,.3), rgba(30,150,160,0) 70%);
+  animation:drift3 38s ease-in-out infinite alternate;
+}
+@keyframes drift1{
+  from{transform:translate3d(0,0,0) scale(1)}
+  to{transform:translate3d(7vw,5vh,0) scale(1.14)}
+}
+@keyframes drift2{
+  from{transform:translate3d(0,0,0) scale(1.08)}
+  to{transform:translate3d(-8vw,7vh,0) scale(.94)}
+}
+@keyframes drift3{
+  from{transform:translate3d(0,0,0) scale(1)}
+  to{transform:translate3d(-6vw,-5vh,0) scale(1.12)}
+}
+
+/* ---- flowing current lines ---- */
+#waves{
+  position:absolute;inset:0;z-index:2;
+  width:100%;height:100%;
+  pointer-events:none;
+}
+
+/* ---- vignette + fine grain ---- */
+.stage::after{
+  content:"";
+  position:absolute;inset:0;z-index:3;
+  pointer-events:none;
+  background:
+    radial-gradient(78% 62% at 50% 46%, rgba(0,0,0,0) 42%, rgba(2,9,16,.55) 100%);
+}
+
+/* ---- wordmark ---- */
+.mark{
+  position:relative;z-index:4;
+  margin:0;
+  padding:0 24px;
   text-align:center;
+  font-size:clamp(22px,7vw,82px);
+  font-weight:600;
+  letter-spacing:.2em;
+  text-indent:.2em;            /* balance the trailing letter-space */
+  line-height:1.25;
+  white-space:nowrap;
+  color:var(--text);
+  text-shadow:0 2px 40px rgba(4,18,31,.7);
+  opacity:0;
+  transform:translateY(14px);
+  animation:rise 1.8s cubic-bezier(.2,.7,.25,1) .25s forwards;
 }
-.cta h2{margin-bottom:16px}
-.cta .lede{margin-inline:auto;text-align:center}
-.cta-actions{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:34px}
-.contact-lines{
-  display:flex;flex-wrap:wrap;gap:12px 40px;justify-content:center;
-  margin-top:38px;padding-top:28px;border-top:1px solid var(--line);
-  font-size:14.5px;color:var(--muted);
+.mark .m{
+  font-weight:300;
+  color:rgba(238,246,248,.72);
 }
-.contact-lines a{text-decoration:none;transition:color .2s ease}
-.contact-lines a:hover{color:var(--accent)}
+@keyframes rise{to{opacity:1;transform:none}}
 
-/* ---------- footer ---------- */
-footer{border-top:1px solid var(--line);margin-top:104px;padding:38px 0}
-.foot{display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between}
-.foot p{margin:0;color:var(--muted);font-size:13.5px}
-.socials{display:flex;gap:10px}
-.socials a{
-  width:38px;height:38px;border:1px solid var(--line);border-radius:10px;
-  display:grid;place-items:center;color:var(--muted);
-  transition:color .2s ease,border-color .2s ease,transform .2s ease;
-}
-.socials a:hover{color:var(--accent);border-color:rgba(56,214,196,.5);transform:translateY(-2px)}
-.socials svg{width:17px;height:17px}
-
-/* ---------- reveal ---------- */
-.rv{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
-.rv.in{opacity:1;transform:none}
-
-/* ---------- responsive ---------- */
-@media (max-width:900px){
-  .split{grid-template-columns:1fr;gap:44px}
-}
-@media (max-width:640px){
-  .work{grid-template-columns:1fr}
-}
-@media (max-width:760px){
-  .menu-btn{display:grid}
-  .nav-links{
-    position:absolute;top:72px;left:0;right:0;
-    flex-direction:column;align-items:stretch;gap:0;
-    background:rgba(7,13,22,.97);backdrop-filter:blur(14px);
-    border-block:1px solid var(--line);padding:8px 24px 20px;
-    display:none;
-  }
-  .nav-links.open{display:flex}
-  .nav-links a{padding:14px 0;border-bottom:1px solid var(--line);font-size:16px}
-  .nav-links .btn{margin-top:14px;border-bottom:none;justify-content:center}
-  .hero{padding:120px 0 76px}
-  .sec{padding:76px 0}
-  .step{grid-template-columns:1fr;gap:10px;padding:24px}
-  .stats{grid-template-columns:1fr 1fr}
-}
-@media (max-width:420px){
-  .hero-actions .btn{width:100%}
-}
 @media (prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
-  .rv{opacity:1;transform:none}
-  .streams path{stroke-dashoffset:0}
+  .caustics i{animation:none}
+  .mark{animation:none;opacity:1;transform:none}
 }
 </style>
 </head>
 <body>
 
-<!-- ============ NAV ============ -->
-<header class="nav" id="nav">
-  <div class="wrap nav-in">
-    <a class="brand" href="#top" aria-label="RIVULINE Media home">
-      <svg viewBox="0 0 32 32" aria-hidden="true">
-        <rect width="32" height="32" rx="8" fill="rgba(56,214,196,.12)"/>
-        <path d="M5 20c4-8 8 4 11-2s5 6 11-4" fill="none" stroke="#38d6c4" stroke-width="2.5" stroke-linecap="round"/>
-      </svg>
-      RIVULINE&nbsp;<span class="sub">MEDIA</span>
-    </a>
-
-    <nav class="nav-links" id="navLinks" aria-label="Primary">
-      <a href="#services">Services</a>
-      <a href="#work">Work</a>
-      <a href="#process">Process</a>
-      <a href="#about">About</a>
-      <a class="btn btn-primary" href="#contact">Start a project</a>
-    </nav>
-
-    <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-        <path d="M3 6h18M3 12h18M3 18h18"/>
-      </svg>
-    </button>
-  </div>
-</header>
-
-<main id="top">
-
-<!-- ============ HERO ============ -->
-<section class="hero">
-  <div class="hero-bg" aria-hidden="true">
-    <div class="glow glow-a"></div>
-    <div class="glow glow-b"></div>
-    <svg class="streams" viewBox="0 0 1200 620" preserveAspectRatio="xMidYMid slice">
-      <defs>
-        <linearGradient id="g1" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stop-color="#38d6c4" stop-opacity="0"/>
-          <stop offset="45%" stop-color="#38d6c4" stop-opacity=".55"/>
-          <stop offset="100%" stop-color="#5b8cff" stop-opacity="0"/>
-        </linearGradient>
-        <linearGradient id="g2" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stop-color="#5b8cff" stop-opacity="0"/>
-          <stop offset="55%" stop-color="#5b8cff" stop-opacity=".35"/>
-          <stop offset="100%" stop-color="#38d6c4" stop-opacity="0"/>
-        </linearGradient>
-      </defs>
-      <path d="M-40 180C220 90 380 300 620 230S1000 60 1260 150" stroke="url(#g1)" stroke-width="1.6"/>
-      <path d="M-40 300C240 200 400 430 660 350S1020 190 1260 270" stroke="url(#g2)" stroke-width="1.4" style="animation-delay:.25s"/>
-      <path d="M-40 430C260 340 420 560 700 470S1040 330 1260 400" stroke="url(#g1)" stroke-width="1.1" style="animation-delay:.5s"/>
-    </svg>
+<div class="stage">
+  <div class="caustics" aria-hidden="true">
+    <i class="c1"></i><i class="c2"></i><i class="c3"></i>
   </div>
 
-  <div class="wrap">
-    <p class="eyebrow rv">Creative studio &middot; Est. 2024</p>
-    <h1 class="rv">Stories with <em class="s">momentum</em>.</h1>
-    <p class="lede rv">RIVULINE Media is a small, senior team making films, social content and photography for brands that would rather be felt than scrolled past.</p>
-    <div class="hero-actions rv">
-      <a class="btn btn-primary" href="#contact">
-        Start a project
-        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
-      <a class="btn btn-ghost" href="#work">See the work</a>
-    </div>
-    <div class="hero-meta rv">
-      <span><i class="dot"></i> Brand film &amp; commercial</span>
-      <span><i class="dot"></i> Social &amp; short-form</span>
-      <span><i class="dot"></i> Photography</span>
-      <span><i class="dot"></i> Post-production</span>
-    </div>
-  </div>
-</section>
+  <canvas id="waves" aria-hidden="true"></canvas>
 
-<!-- ============ MARQUEE ============ -->
-<div class="strip" aria-hidden="true">
-  <div class="track">
-    <span>Brand Film</span><span>&mdash;</span><span>Documentary</span><span>&mdash;</span><span>Commercial</span><span>&mdash;</span><span>Social Content</span><span>&mdash;</span><span>Photography</span><span>&mdash;</span><span>Color &amp; Post</span><span>&mdash;</span>
-    <span>Brand Film</span><span>&mdash;</span><span>Documentary</span><span>&mdash;</span><span>Commercial</span><span>&mdash;</span><span>Social Content</span><span>&mdash;</span><span>Photography</span><span>&mdash;</span><span>Color &amp; Post</span><span>&mdash;</span>
-  </div>
+  <h1 class="mark">RIVULINE <span class="m">Media</span></h1>
 </div>
-
-<!-- ============ SERVICES ============ -->
-<section class="sec" id="services">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <p class="eyebrow">What we do</p>
-      <h2>Full-service production, without the agency overhead.</h2>
-      <p class="lede" style="margin-top:16px">Concept to final delivery, handled by the same people who pitched it. No handoffs, no telephone game.</p>
-    </div>
-
-    <div class="grid services">
-      <article class="card rv">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 8-6 4 6 4V8Z"/><rect x="2" y="6" width="14" height="12" rx="2"/></svg></div>
-        <h3>Brand film</h3>
-        <p>Hero films, founder stories and campaign spots — written, directed and shot in-house, built to carry a brand for years rather than a quarter.</p>
-      </article>
-
-      <article class="card rv">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M12 18h.01"/></svg></div>
-        <h3>Social &amp; short-form</h3>
-        <p>Vertical-first content made to be posted, not repurposed. Monthly retainers that keep the feed fed without burning the team out.</p>
-      </article>
-
-      <article class="card rv">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3Z"/><circle cx="12" cy="13" r="3.5"/></svg></div>
-        <h3>Photography</h3>
-        <p>Campaign, product, portrait and event stills captured alongside video, so one shoot day fills the whole content calendar.</p>
-      </article>
-
-      <article class="card rv">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="19" cy="13" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="10" cy="19" r="2.5"/><path d="M12 2a10 10 0 1 0 0 20c1.1 0 2-.9 2-2 0-1.5-1-1.8-1-3 0-1.1.9-2 2-2h1a6 6 0 0 0 6-6c0-4.4-4.5-7-10-7Z" opacity=".35"/></svg></div>
-        <h3>Color &amp; post</h3>
-        <p>Editorial, grade, sound and finishing — including cleanup on footage you already have. Often the fastest way to make a library feel new.</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ============ WORK ============ -->
-<section class="sec" id="work" style="padding-top:0">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <p class="eyebrow">Selected work</p>
-      <h2>A few things we&rsquo;re proud of.</h2>
-    </div>
-
-    <div class="grid work">
-      <a class="tile t1 rv" href="#contact">
-        <span class="tag">Brand film</span>
-        <h3>Northbank Coffee</h3>
-        <p>A four-minute origin story, shot across two harvests.</p>
-      </a>
-      <a class="tile t2 rv" href="#contact">
-        <span class="tag">Campaign</span>
-        <h3>Meridian Athletic</h3>
-        <p>Launch spot plus 40 vertical cutdowns in one shoot week.</p>
-      </a>
-      <a class="tile t3 rv" href="#contact">
-        <span class="tag">Documentary</span>
-        <h3>The Long Course</h3>
-        <p>Short doc following a masters swim club through season.</p>
-      </a>
-      <a class="tile t4 rv" href="#contact">
-        <span class="tag">Photography</span>
-        <h3>Hearth &amp; Grain</h3>
-        <p>Seasonal product and lifestyle stills for a regional bakery.</p>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ============ ABOUT ============ -->
-<section class="sec" id="about" style="padding-top:0">
-  <div class="wrap split">
-    <div class="about rv">
-      <p class="eyebrow">Who we are</p>
-      <h2 style="margin-bottom:22px">Small crew. <em class="s">Senior hands.</em></h2>
-      <p>RIVULINE Media started with a simple frustration: great stories kept getting flattened by the process meant to deliver them. So we built a studio where the director is on set, the editor sat in the strategy call, and nothing gets lost between the pitch and the final cut.</p>
-      <p>We work with a handful of clients at a time — founders, marketing leads and agencies who want a partner rather than a vendor. That means honest timelines, one point of contact, and a finished piece that looks like what we promised.</p>
-    </div>
-
-    <div class="stats rv">
-      <div class="stat"><b>120<span class="u">+</span></b><small>Projects delivered</small></div>
-      <div class="stat"><b>4K<span class="u">&ndash;8K</span></b><small>Capture &amp; finishing</small></div>
-      <div class="stat"><b>2<span class="u">wk</span></b><small>Typical turnaround</small></div>
-      <div class="stat"><b>1<span class="u">:1</span></b><small>Direct with the crew</small></div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ PROCESS ============ -->
-<section class="sec" id="process" style="padding-top:0">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <p class="eyebrow">How it works</p>
-      <h2>Four steps, no surprises.</h2>
-    </div>
-
-    <div class="steps rv">
-      <div class="step">
-        <div class="n">01</div>
-        <div><h3>Conversation</h3><p>A 30-minute call about the goal, the audience and the budget. You leave it knowing whether we&rsquo;re the right fit — we&rsquo;ll say so if we&rsquo;re not.</p></div>
-      </div>
-      <div class="step">
-        <div class="n">02</div>
-        <div><h3>Concept &amp; quote</h3><p>A written treatment, a shot approach and a fixed quote. One document, everything in it, nothing billed later that isn&rsquo;t on the page.</p></div>
-      </div>
-      <div class="step">
-        <div class="n">03</div>
-        <div><h3>Production</h3><p>We handle crew, gear, locations and logistics. You show up, or you don&rsquo;t — plenty of clients only see the footage at first cut.</p></div>
-      </div>
-      <div class="step">
-        <div class="n">04</div>
-        <div><h3>Delivery</h3><p>Two rounds of revisions, then every format you need: broadcast, web, vertical, stills. Source files stay yours, always.</p></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ CONTACT ============ -->
-<section class="sec" id="contact" style="padding-top:0">
-  <div class="wrap">
-    <div class="cta rv">
-      <p class="eyebrow" style="justify-content:center">Get in touch</p>
-      <h2>Got something worth filming?</h2>
-      <p class="lede">Tell us what you&rsquo;re working on and roughly when it needs to be out in the world. We answer every enquiry within two business days.</p>
-      <div class="cta-actions">
-        <a class="btn btn-primary" href="mailto:hello@rivuline.com?subject=Project%20enquiry">
-          hello@rivuline.com
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
-        <a class="btn btn-ghost" href="mailto:hello@rivuline.com?subject=Book%20a%20call">Book a call</a>
-      </div>
-      <div class="contact-lines">
-        <span>Email &middot; <a href="mailto:hello@rivuline.com">hello@rivuline.com</a></span>
-        <span>Studio &middot; Available worldwide</span>
-        <span>Hours &middot; Mon&ndash;Fri, 9&ndash;6</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-</main>
-
-<!-- ============ FOOTER ============ -->
-<footer>
-  <div class="wrap foot">
-    <p>&copy; <span id="yr">2026</span> RIVULINE Media. All rights reserved.</p>
-    <div class="socials">
-      <a href="#" aria-label="Instagram">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-      </a>
-      <a href="#" aria-label="Vimeo">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="4"/><path d="M10 9.5v5l4.5-2.5L10 9.5Z" fill="currentColor" stroke="none"/></svg>
-      </a>
-      <a href="#" aria-label="LinkedIn">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M7.5 10.5V17M7.5 7.5v.01M11.5 17v-3.6a2.4 2.4 0 0 1 4.8 0V17"/></svg>
-      </a>
-      <a href="mailto:hello@rivuline.com" aria-label="Email">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="m3 7 9 6 9-6"/></svg>
-      </a>
-    </div>
-  </div>
-</footer>
 
 <script>
 (function () {
-  // year
-  document.getElementById('yr').textContent = new Date().getFullYear();
+  var canvas = document.getElementById('waves');
+  var ctx = canvas.getContext('2d');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-  // sticky nav state
-  var nav = document.getElementById('nav');
-  var onScroll = function () {
-    nav.classList.toggle('scrolled', window.scrollY > 12);
-  };
-  onScroll();
-  window.addEventListener('scroll', onScroll, { passive: true });
+  var W = 0, H = 0, dpr = 1;
+  var LINES = 16;
 
-  // mobile menu
-  var btn = document.getElementById('menuBtn');
-  var links = document.getElementById('navLinks');
-  var setMenu = function (open) {
-    links.classList.toggle('open', open);
-    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-  };
-  btn.addEventListener('click', function () {
-    setMenu(!links.classList.contains('open'));
-  });
-  links.addEventListener('click', function (e) {
-    if (e.target.closest('a')) setMenu(false);
-  });
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') setMenu(false);
-  });
-
-  // reveal on scroll
-  var items = document.querySelectorAll('.rv');
-  if (!('IntersectionObserver' in window) ||
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    items.forEach(function (el) { el.classList.add('in'); });
-    return;
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = canvas.clientWidth;
+    H = canvas.clientHeight;
+    canvas.width = Math.round(W * dpr);
+    canvas.height = Math.round(H * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   }
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry, i) {
-      if (!entry.isIntersecting) return;
-      var el = entry.target;
-      el.style.transitionDelay = Math.min(i * 70, 280) + 'ms';
-      el.classList.add('in');
-      io.unobserve(el);
+
+  // Layered sines -> smooth, non-repeating-looking current
+  function offset(x, t, i) {
+    var k = 1 + i * 0.06;
+    return (
+      Math.sin(x * 0.0042 * k + t * 0.22 + i * 0.55) * 26 +
+      Math.sin(x * 0.0091 * k - t * 0.31 + i * 1.3) * 13 +
+      Math.sin(x * 0.0019 - t * 0.14 + i * 0.27) * 38
+    );
+  }
+
+  function draw(t) {
+    ctx.clearRect(0, 0, W, H);
+
+    for (var i = 0; i < LINES; i++) {
+      var p = i / (LINES - 1);            // 0 (top) -> 1 (bottom)
+      var baseY = H * (0.12 + p * 0.82);
+      var depth = Math.sin(p * Math.PI);  // strongest mid-frame
+
+      ctx.beginPath();
+      var step = 14;
+      for (var x = -40; x <= W + 40; x += step) {
+        var y = baseY + offset(x, t, i) * (0.45 + depth * 0.85);
+        if (x === -40) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+      }
+
+      var g = ctx.createLinearGradient(0, 0, W, 0);
+      var a = (0.05 + depth * 0.13) * (1 - p * 0.35);
+      g.addColorStop(0,    'rgba(127,224,216,0)');
+      g.addColorStop(0.2,  'rgba(127,224,216,' + a.toFixed(3) + ')');
+      g.addColorStop(0.5,  'rgba(168,238,235,' + (a * 1.35).toFixed(3) + ')');
+      g.addColorStop(0.8,  'rgba(108,168,230,' + a.toFixed(3) + ')');
+      g.addColorStop(1,    'rgba(108,168,230,0)');
+
+      ctx.strokeStyle = g;
+      ctx.lineWidth = 0.9 + depth * 0.9;
+      ctx.stroke();
+    }
+  }
+
+  var start = null, raf = null;
+  function frame(now) {
+    if (start === null) start = now;
+    draw((now - start) / 1000);
+    raf = requestAnimationFrame(frame);
+  }
+  function play() {
+    if (raf === null && !reduce.matches) raf = requestAnimationFrame(frame);
+  }
+  function pause() {
+    if (raf !== null) { cancelAnimationFrame(raf); raf = null; }
+  }
+
+  resize();
+  draw(0);
+  if (!reduce.matches) play();
+
+  var rt;
+  window.addEventListener('resize', function () {
+    clearTimeout(rt);
+    rt = setTimeout(function () { resize(); draw(raf === null ? 0 : performance.now() / 1000); }, 120);
+  });
+
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden) pause();
+    else { start = null; play(); }
+  });
+
+  if (reduce.addEventListener) {
+    reduce.addEventListener('change', function () {
+      if (reduce.matches) { pause(); draw(0); } else { start = null; play(); }
     });
-  }, { rootMargin: '0px 0px -6% 0px', threshold: 0 });
-  items.forEach(function (el) { io.observe(el); });
+  }
 })();
 </script>
 
