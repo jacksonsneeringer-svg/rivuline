@@ -1,0 +1,488 @@
+/* ==========================================================================
+   RIVULINE Media — shared site shell
+   Tokens, animated underwater backdrop, nav, buttons, prose.
+   ========================================================================== */
+
+:root{
+  --deep:#04121f;
+  --deep-2:#061a2b;
+  --text:#eef6f8;
+  --muted:rgba(238,246,248,.62);
+  --faint:rgba(238,246,248,.38);
+  --accent:#7fe0d8;
+  --accent-dim:#6fd8d2;
+  --line:rgba(127,224,216,.16);
+  --panel:rgba(8,32,48,.52);
+  --nav-h:64px;
+  --measure:68ch;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+
+html{scroll-behavior:smooth}
+
+body{
+  margin:0;
+  min-height:100%;
+  background:var(--deep);
+  color:var(--text);
+  font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+
+/* Home page is a fixed, non-scrolling splash. */
+body.home{height:100vh;height:100dvh;overflow:hidden}
+
+a{color:var(--accent);text-decoration-color:rgba(127,224,216,.35);text-underline-offset:3px}
+a:hover{text-decoration-color:var(--accent)}
+
+:focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:3px;
+  border-radius:4px;
+}
+
+/* --------------------------------------------------------------------------
+   Backdrop: depth gradient + drifting caustics + flowing current lines
+   -------------------------------------------------------------------------- */
+.backdrop{
+  position:fixed;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  isolation:isolate;
+}
+.backdrop::before{
+  content:"";
+  position:absolute;inset:0;z-index:0;
+  background:
+    radial-gradient(120% 78% at 50% -12%, #10425a 0%, #0a2a40 34%, #061a2b 62%, #04121f 100%),
+    linear-gradient(180deg,#062033 0%,#04121f 70%,#020b14 100%);
+}
+.backdrop::after{
+  content:"";
+  position:absolute;inset:0;z-index:3;
+  background:radial-gradient(78% 62% at 50% 46%, rgba(0,0,0,0) 42%, rgba(2,9,16,.55) 100%);
+}
+
+.caustics{
+  position:absolute;inset:-15%;z-index:1;
+  filter:blur(46px);
+  opacity:.5;
+}
+.caustics i{
+  position:absolute;
+  display:block;
+  border-radius:50%;
+  mix-blend-mode:screen;
+}
+.c1{
+  width:62vw;height:52vw;left:2%;top:-14%;
+  background:radial-gradient(circle at 50% 50%, rgba(74,196,196,.42), rgba(74,196,196,0) 68%);
+  animation:drift1 26s ease-in-out infinite alternate;
+}
+.c2{
+  width:54vw;height:46vw;right:-6%;top:6%;
+  background:radial-gradient(circle at 50% 50%, rgba(56,128,214,.38), rgba(56,128,214,0) 68%);
+  animation:drift2 32s ease-in-out infinite alternate;
+}
+.c3{
+  width:70vw;height:40vw;left:14%;bottom:-18%;
+  background:radial-gradient(circle at 50% 50%, rgba(30,150,160,.3), rgba(30,150,160,0) 70%);
+  animation:drift3 38s ease-in-out infinite alternate;
+}
+@keyframes drift1{
+  from{transform:translate3d(0,0,0) scale(1)}
+  to{transform:translate3d(7vw,5vh,0) scale(1.14)}
+}
+@keyframes drift2{
+  from{transform:translate3d(0,0,0) scale(1.08)}
+  to{transform:translate3d(-8vw,7vh,0) scale(.94)}
+}
+@keyframes drift3{
+  from{transform:translate3d(0,0,0) scale(1)}
+  to{transform:translate3d(-6vw,-5vh,0) scale(1.12)}
+}
+
+#waves{
+  position:absolute;inset:0;z-index:2;
+  width:100%;height:100%;
+}
+
+/* Subpages need the copy to stay readable over the moving water. */
+body:not(.home) .caustics{opacity:.34}
+body:not(.home) #waves{opacity:.6}
+
+/* --------------------------------------------------------------------------
+   Nav
+   -------------------------------------------------------------------------- */
+.nav{
+  position:fixed;
+  top:0;left:0;right:0;
+  z-index:20;
+  min-height:var(--nav-h);
+  display:flex;
+  align-items:center;
+  gap:16px;
+  flex-wrap:wrap;
+  padding:12px clamp(16px,4vw,40px);
+  background:linear-gradient(180deg, rgba(4,18,31,.78) 0%, rgba(4,18,31,.34) 62%, rgba(4,18,31,0) 100%);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+}
+
+.nav-brand{
+  font-size:14px;
+  font-weight:600;
+  letter-spacing:.24em;
+  text-indent:.24em;
+  color:var(--text);
+  text-decoration:none;
+  white-space:nowrap;
+  opacity:.92;
+  transition:opacity .2s ease;
+}
+.nav-brand:hover{opacity:1}
+.nav-brand .m{font-weight:300;color:var(--muted)}
+
+.nav-tabs{
+  display:flex;
+  align-items:center;
+  gap:4px;
+  margin-left:auto;
+  flex-wrap:wrap;
+}
+.nav-tabs a{
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:8px 14px;
+  border-radius:999px;
+  font-size:14px;
+  font-weight:400;
+  letter-spacing:.04em;
+  color:var(--muted);
+  text-decoration:none;
+  white-space:nowrap;
+  transition:color .2s ease, background-color .2s ease;
+}
+.nav-tabs a:hover{color:var(--text);background:rgba(127,224,216,.09)}
+.nav-tabs a[aria-current="page"]{
+  color:var(--text);
+  background:rgba(127,224,216,.13);
+  box-shadow:inset 0 0 0 1px var(--line);
+}
+.nav-tabs .ext{
+  width:11px;height:11px;
+  flex:none;
+  opacity:.6;
+  transform:translateY(-1px);
+}
+.nav-tabs a:hover .ext{opacity:.95}
+
+/* --------------------------------------------------------------------------
+   Home hero
+   -------------------------------------------------------------------------- */
+.hero{
+  position:relative;
+  z-index:4;
+  height:100vh;
+  height:100dvh;
+  display:grid;
+  place-items:center;
+}
+.mark{
+  margin:0;
+  padding:0 24px;
+  text-align:center;
+  font-size:clamp(22px,7vw,82px);
+  font-weight:600;
+  letter-spacing:.2em;
+  text-indent:.2em;            /* balance the trailing letter-space */
+  line-height:1.25;
+  white-space:nowrap;
+  color:var(--text);
+  text-shadow:0 2px 40px rgba(4,18,31,.7);
+  opacity:0;
+  transform:translateY(14px);
+  animation:rise 1.8s cubic-bezier(.2,.7,.25,1) .25s forwards;
+}
+.mark .m{
+  font-weight:300;
+  color:rgba(238,246,248,.72);
+}
+@keyframes rise{to{opacity:1;transform:none}}
+
+/* --------------------------------------------------------------------------
+   Subpage layout
+   -------------------------------------------------------------------------- */
+.page-wrap{
+  position:relative;
+  z-index:4;
+  min-height:100vh;
+  min-height:100dvh;
+  display:flex;
+  flex-direction:column;
+  padding:calc(var(--nav-h) + 28px) clamp(16px,5vw,40px) 0;
+}
+.page-wrap > main{flex:1 0 auto;width:100%}
+
+.site-foot{
+  flex:none;
+  width:100%;
+  max-width:var(--measure);
+  margin:72px auto 0;
+  padding:22px 0 40px;
+  border-top:1px solid rgba(127,224,216,.12);
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px 20px;
+  align-items:center;
+  font-size:13px;
+  color:var(--faint);
+}
+.site-foot a{color:var(--muted);text-decoration:none}
+.site-foot a:hover{color:var(--accent)}
+.site-foot .spacer{margin-left:auto}
+
+/* --------------------------------------------------------------------------
+   Buttons
+   -------------------------------------------------------------------------- */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  padding:14px 24px;
+  border:1px solid var(--line);
+  border-radius:12px;
+  background:rgba(8,32,48,.5);
+  color:var(--text);
+  font:inherit;
+  font-size:15px;
+  font-weight:400;
+  line-height:1.2;
+  text-decoration:none;
+  cursor:pointer;
+  transition:transform .18s ease, border-color .2s ease, background-color .2s ease;
+}
+.btn:hover{
+  transform:translateY(-1px);
+  border-color:rgba(127,224,216,.34);
+  background:rgba(12,44,62,.62);
+}
+.btn:active{transform:none}
+
+.btn-store{
+  padding:12px 24px;
+  border-color:rgba(127,224,216,.3);
+  background:linear-gradient(180deg, rgba(127,224,216,.16), rgba(127,224,216,.06));
+  text-align:left;
+}
+.btn-store .apple{width:22px;height:26px;flex:none;fill:var(--text);opacity:.92}
+.btn-store .lines{display:flex;flex-direction:column;gap:1px}
+.btn-store .small{font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.btn-store .big{font-size:17px;font-weight:600;letter-spacing:.01em}
+
+/* Placeholder links are inert until a real destination exists. */
+.btn[aria-disabled="true"]{
+  cursor:not-allowed;
+  opacity:.72;
+  filter:saturate(.7);
+}
+.btn[aria-disabled="true"]:hover{transform:none;background:linear-gradient(180deg, rgba(127,224,216,.16), rgba(127,224,216,.06))}
+
+/* --------------------------------------------------------------------------
+   Prose (privacy policy)
+   -------------------------------------------------------------------------- */
+.prose{
+  max-width:var(--measure);
+  margin:0 auto;
+  font-size:16px;
+  line-height:1.75;
+  color:rgba(238,246,248,.84);
+}
+.prose h1{
+  margin:0 0 10px;
+  font-size:clamp(28px,5vw,42px);
+  font-weight:600;
+  letter-spacing:-.01em;
+  line-height:1.15;
+  color:var(--text);
+}
+.prose h2{
+  margin:44px 0 12px;
+  font-size:19px;
+  font-weight:600;
+  letter-spacing:.01em;
+  color:var(--text);
+}
+.prose h3{
+  margin:28px 0 8px;
+  font-size:16px;
+  font-weight:600;
+  color:var(--text);
+}
+.prose p{margin:0 0 16px}
+.prose ul{margin:0 0 16px;padding-left:22px}
+.prose li{margin:0 0 8px}
+.prose li::marker{color:rgba(127,224,216,.5)}
+.prose strong{color:var(--text);font-weight:600}
+.prose hr{
+  margin:40px 0;
+  border:0;
+  border-top:1px solid rgba(127,224,216,.12);
+}
+.eyebrow{
+  margin:0 0 14px;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--accent-dim);
+}
+.dateline{
+  margin:0 0 34px;
+  font-size:14px;
+  color:var(--faint);
+}
+
+.callout{
+  margin:0 0 32px;
+  padding:20px 22px;
+  border:1px solid var(--line);
+  border-left:2px solid var(--accent-dim);
+  border-radius:12px;
+  background:var(--panel);
+}
+.callout p:last-child{margin-bottom:0}
+
+/* Spots that still need a real value before launch. */
+.ph{
+  padding:1px 7px;
+  border:1px dashed rgba(127,224,216,.45);
+  border-radius:5px;
+  background:rgba(127,224,216,.08);
+  font-size:.92em;
+  letter-spacing:.02em;
+  color:var(--accent);
+  white-space:nowrap;
+}
+
+/* --------------------------------------------------------------------------
+   Motion preferences
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .caustics i{animation:none}
+  .mark{animation:none;opacity:1;transform:none}
+  .btn:hover{transform:none}
+}
+
+/* Visually hidden, still announced by screen readers. */
+.sr-only{
+  position:absolute;
+  width:1px;height:1px;
+  margin:-1px;padding:0;
+  overflow:hidden;
+  clip:rect(0 0 0 0);
+  clip-path:inset(50%);
+  white-space:nowrap;
+  border:0;
+}
+
+/* --------------------------------------------------------------------------
+   thoughtbubbl product page
+   -------------------------------------------------------------------------- */
+.product{
+  max-width:620px;
+  margin:0 auto;
+  padding:clamp(24px,7vh,72px) 0 0;
+  text-align:center;
+}
+
+.app-icon{
+  width:clamp(104px,26vw,132px);
+  height:clamp(104px,26vw,132px);
+  margin:0 auto 26px;
+  display:block;
+  border-radius:24%;
+  box-shadow:
+    0 18px 50px rgba(2,9,16,.62),
+    inset 0 0 0 1px rgba(127,224,216,.22);
+}
+
+.product h1{
+  margin:0 0 12px;
+  font-size:clamp(30px,7vw,46px);
+  font-weight:600;
+  letter-spacing:-.015em;
+  line-height:1.1;
+}
+.tagline{
+  max-width:42ch;
+  margin:0 auto 34px;
+  font-size:clamp(15px,2.4vw,17px);
+  line-height:1.7;
+  color:var(--muted);
+}
+
+.actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px;
+  justify-content:center;
+  align-items:stretch;
+}
+.actions .btn{flex:0 1 auto}
+
+.note{
+  margin:20px 0 0;
+  font-size:13px;
+  line-height:1.6;
+  color:var(--faint);
+}
+
+/* A dashed frame marks everything on this page that is still stand-in content. */
+.placeholder-frame{
+  position:relative;
+  display:inline-block;
+  padding:10px;
+  border:1px dashed rgba(127,224,216,.3);
+  border-radius:28px;
+}
+.placeholder-frame .tag{
+  position:absolute;
+  left:50%;
+  bottom:-9px;
+  transform:translateX(-50%);
+  padding:1px 9px;
+  border-radius:999px;
+  background:var(--deep-2);
+  box-shadow:inset 0 0 0 1px rgba(127,224,216,.3);
+  font-size:10px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--accent-dim);
+  white-space:nowrap;
+}
+
+/* The icon's own bottom margin belongs outside the placeholder frame. */
+.placeholder-frame{margin:0 0 34px}
+.placeholder-frame .app-icon{margin-bottom:0}
+
+/* --------------------------------------------------------------------------
+   Narrow screens: the nav wraps to two rows, so content needs more clearance.
+   -------------------------------------------------------------------------- */
+@media (max-width:560px){
+  :root{--nav-h:96px}
+  .nav{gap:10px;justify-content:center;padding-bottom:10px}
+  .nav-brand{width:100%;text-align:center;font-size:13px}
+  .nav-tabs{margin:0 auto;justify-content:center}
+  .nav-tabs a{padding:7px 12px;font-size:13.5px}
+  .prose{font-size:15.5px}
+  .actions .btn{width:100%;max-width:320px}
+  .site-foot{margin-top:56px}
+}
