@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-label="thoughtbubbl app icon">
+  <title>thoughtbubbl</title>
+  <defs>
+    <!-- warm linen ground -->
+    <linearGradient id="ground" x1="0" y1="0" x2=".35" y2="1">
+      <stop offset="0" stop-color="#f6ddbd"/>
+      <stop offset="55%" stop-color="#efd3ad"/>
+      <stop offset="100%" stop-color="#e7c69c"/>
+    </linearGradient>
+
+    <!-- brushed navy dome -->
+    <radialGradient id="dome" cx="33%" cy="24%" r="92%">
+      <stop offset="0" stop-color="#7dabce"/>
+      <stop offset="14%" stop-color="#5b8cb4"/>
+      <stop offset="34%" stop-color="#3a6b91"/>
+      <stop offset="58%" stop-color="#254a6c"/>
+      <stop offset="80%" stop-color="#173650"/>
+      <stop offset="100%" stop-color="#0e2236"/>
+    </radialGradient>
+    <linearGradient id="sheen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff" stop-opacity=".26"/>
+      <stop offset="40%" stop-color="#fff" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity=".2"/>
+    </linearGradient>
+
+    <!-- frosted sage ring -->
+    <linearGradient id="sage" x1=".2" y1="0" x2=".8" y2="1">
+      <stop offset="0" stop-color="#d3ddca"/>
+      <stop offset="50%" stop-color="#b0c1aa"/>
+      <stop offset="100%" stop-color="#93a78d"/>
+    </linearGradient>
+
+    <!-- copper ring -->
+    <linearGradient id="copper" x1=".15" y1="0" x2=".85" y2="1">
+      <stop offset="0" stop-color="#f5bb99"/>
+      <stop offset="38%" stop-color="#de9169"/>
+      <stop offset="70%" stop-color="#c2704b"/>
+      <stop offset="100%" stop-color="#e3a680"/>
+    </linearGradient>
+
+    <!-- fine horizontal streaks: brushed metal -->
+    <filter id="brush" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9 0.012" numOctaves="2" seed="7"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="linear" slope=".16"/></feComponentTransfer>
+    </filter>
+
+    <!-- woven texture on the ground -->
+    <filter id="linen" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.5" numOctaves="3" seed="3"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="linear" slope=".09"/></feComponentTransfer>
+    </filter>
+
+    <filter id="castLarge" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="26"/>
+    </filter>
+    <filter id="castSmall" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="14"/>
+    </filter>
+
+    <clipPath id="domeClip"><circle cx="595" cy="400" r="305"/></clipPath>
+  </defs>
+
+  <rect width="1024" height="1024" fill="url(#ground)"/>
+  <rect width="1024" height="1024" filter="url(#linen)" opacity=".5"/>
+
+  <!-- dome, with its cast shadow -->
+  <ellipse cx="602" cy="655" rx="292" ry="70" fill="#b88e5e" opacity=".38" filter="url(#castLarge)"/>
+  <circle cx="595" cy="400" r="305" fill="url(#dome)"/>
+  <g clip-path="url(#domeClip)">
+    <rect x="290" y="95" width="610" height="610" filter="url(#brush)" opacity=".6"/>
+    <circle cx="595" cy="400" r="305" fill="url(#sheen)"/>
+  </g>
+
+  <!-- frosted sage ring, overlapping the dome -->
+  <ellipse cx="478" cy="874" rx="150" ry="42" fill="#a8825a" opacity=".3" filter="url(#castSmall)"/>
+  <circle cx="472" cy="688" r="148" fill="none" stroke="url(#sage)" stroke-width="48" opacity=".74"/>
+
+  <!-- copper ring -->
+  <ellipse cx="212" cy="926" rx="86" ry="25" fill="#a8825a" opacity=".34" filter="url(#castSmall)"/>
+  <circle cx="205" cy="845" r="72" fill="none" stroke="url(#copper)" stroke-width="45"/>
+</svg>
