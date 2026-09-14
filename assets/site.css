@@ -527,3 +527,43 @@ body:not(.home) #waves{opacity:.6}
 /* Yes/no answers in the "leaves your device" column. */
 .never{color:var(--accent);white-space:nowrap}
 .maybe{color:rgba(238,246,248,.72)}
+
+/* --------------------------------------------------------------------------
+   Contact card — the support page's primary call to action
+   -------------------------------------------------------------------------- */
+.contact-card{
+  margin:0 0 36px;
+  padding:24px 26px;
+  border:1px solid rgba(127,224,216,.24);
+  border-radius:14px;
+  background:linear-gradient(180deg, rgba(127,224,216,.1), rgba(8,32,48,.5));
+  text-align:center;
+}
+.contact-label{
+  margin:0 0 8px !important;
+  font-size:11.5px;
+  font-weight:600;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--accent-dim);
+}
+.contact-value{
+  margin:0 0 8px !important;
+  font-size:clamp(18px,4.2vw,24px);
+  font-weight:600;
+  line-height:1.3;
+  word-break:break-word;
+}
+.contact-value a{
+  color:var(--text);
+  text-decoration:none;
+  border-bottom:1px solid rgba(127,224,216,.4);
+  padding-bottom:2px;
+  transition:color .2s ease, border-color .2s ease;
+}
+.contact-value a:hover{color:var(--accent);border-color:var(--accent)}
+.contact-meta{
+  margin:0 !important;
+  font-size:13px;
+  color:var(--faint);
+}
