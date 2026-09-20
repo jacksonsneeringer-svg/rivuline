@@ -409,9 +409,12 @@ body:not(.home) #waves{opacity:.6}
   margin:0 auto 26px;
   display:block;
   border-radius:24%;
+  /* The icon is a raster image, so the hairline ring sits outside it — an
+     inset shadow would paint behind the bitmap and never show. */
+  object-fit:cover;
   box-shadow:
     0 18px 50px rgba(2,9,16,.62),
-    inset 0 0 0 1px rgba(127,224,216,.22);
+    0 0 0 1px rgba(127,224,216,.22);
 }
 
 .product h1{
