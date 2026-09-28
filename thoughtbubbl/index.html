@@ -48,12 +48,8 @@
 <div class="page-wrap">
   <main class="product">
 
-    <!-- Stand-in artwork — swap the src for the shipped icon once the real one exists. -->
-    <span class="placeholder-frame">
-      <img class="app-icon" src="/assets/thoughtbubbl-icon.jpg" width="1024" height="1024"
-           alt="thoughtbubbl app icon (placeholder)">
-      <span class="tag">placeholder icon</span>
-    </span>
+    <img class="app-icon" src="/assets/thoughtbubbl-icon.jpg" width="1024" height="1024"
+         alt="thoughtbubbl app icon">
 
     <h1>thoughtbubbl</h1>
     <p class="tagline">
@@ -63,9 +59,8 @@
     </p>
 
     <div class="actions">
-      <!-- PLACEHOLDER LINK — replace href with the real App Store URL and drop
-           aria-disabled + data-placeholder to make the button live. -->
-      <a class="btn btn-store" href="#" aria-disabled="true" data-placeholder="true">
+      <a class="btn btn-store" href="https://apps.apple.com/app/thoughtbubbl/id6804577901"
+         target="_blank" rel="noopener noreferrer">
         <svg class="apple" viewBox="0 0 20 24" aria-hidden="true">
           <path d="M16.6 12.7c0-2.9 2.4-4.3 2.5-4.4-1.4-2-3.5-2.3-4.2-2.3-1.8-.2-3.5 1-4.4 1-.9 0-2.3-1-3.8-1C4.8 6 3 7.1 2 8.9c-2 3.5-.5 8.7 1.4 11.6.9 1.4 2 3 3.5 2.9 1.4-.1 1.9-.9 3.6-.9s2.2.9 3.7.9 2.5-1.4 3.4-2.8c1.1-1.6 1.5-3.2 1.5-3.3-.1 0-2.9-1.1-2.5-4.6ZM13.8 4c.8-.9 1.3-2.2 1.2-3.5-1.1 0-2.5.8-3.3 1.7-.7.8-1.3 2.1-1.2 3.4 1.2.1 2.5-.6 3.3-1.6Z"/>
         </svg>
@@ -78,8 +73,6 @@
       <a class="btn" href="/thoughtbubbl/support/">Support</a>
       <a class="btn" href="/thoughtbubbl/privacy/">Privacy Policy</a>
     </div>
-
-    <p class="note">App Store link coming soon — thoughtbubbl isn&rsquo;t published yet.</p>
   </main>
 
   <footer class="site-foot">
@@ -94,11 +87,6 @@
 <script src="/assets/waves.js"></script>
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
-
-  // Keep stand-in buttons inert so they can't navigate anywhere misleading.
-  document.querySelectorAll('[data-placeholder="true"]').forEach(function (el) {
-    el.addEventListener('click', function (e) { e.preventDefault(); });
-  });
 </script>
 </body>
 </html>
